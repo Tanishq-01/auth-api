@@ -36,3 +36,26 @@ exports.acceptCodeSchema = Joi.object({
   }),
   providedCode : Joi.number().required(),
 });
+
+exports.changePasswordSchema = Joi.object({
+  oldPassword: Joi.string()
+		.required()
+		.pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*d).{8,}$')),
+  newPassword: Joi.string()
+		.required()
+		.pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*d).{8,}$'))
+});
+
+exports.acceptFPSchema = Joi.object({
+  email : Joi.string()
+  .min(6)
+  .max(60)
+  .required().
+  email({
+    tlds: {allow:['com','net']},
+  }),
+  providedCode : Joi.number().required(),
+  password: Joi.string()
+		.required()
+		.pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*d).{8,}$')),
+})
