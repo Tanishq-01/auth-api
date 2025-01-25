@@ -52,7 +52,7 @@ exports.signin = async (req,res) =>{
     }
     
     const token = jwt.sign({
-      user_id : existingUser._id,
+      userId : existingUser._id,
       email : existingUser.email,
       verified : existingUser.verified,
     },
